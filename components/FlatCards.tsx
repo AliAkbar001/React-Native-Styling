@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     paddingHorizontal: 8,
-    marginTop: 15,
+    marginVertical: 15,
   },
   container: {
-    marginTop: 15,
     padding: 5,
+    paddingTop: 0,
   },
   card: {
     width: 100,
@@ -43,16 +43,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   cardOne: {
-    backgroundColor: '#f55d42',
+    backgroundColor: '#A41F13',
   },
   cardTwo: {
-    backgroundColor: '#4287f5',
+    backgroundColor: '#272838',
   },
   cardThree: {
-    backgroundColor: '#425af5',
+    backgroundColor: '#292F36',
   },
   cardFour: {
-    backgroundColor: '#f5429e',
+    backgroundColor: '#8F7A6E',
   },
 });
 

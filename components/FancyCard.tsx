@@ -1,5 +1,6 @@
 import {Image, StyleSheet, Text, View, Linking, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { places_list } from '../places';
 
 export default function FancyCard() {
     function OpenWebsite(link:string){
@@ -7,26 +8,26 @@ export default function FancyCard() {
     }
   return (
     <View>
-      <Text style={styles.headingTest}>Trending Card</Text>
-      <View style={styles.container}>
-        <Image
-            source={{uri:'https://images.unsplash.com/photo-1608020932658-d0e19a69580b?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}}
-            style={styles.cardImage}
-        />
-        <View style={styles.details}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.title}>Faisal Mosque</Text>
-                <Text>Islamabad City, Pakistan</Text>
+        <Text style={styles.headingTest}>Trending Places</Text>
+        { places_list.map((e=>
+            <View key={e.id} style={styles.container}>
+                <Image
+                    source={{uri: e.image_url}}
+                    style={styles.cardImage}
+                />
+                <View style={styles.details}>
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.title}>{e.name}</Text>
+                        <Text>{e.location}</Text>
+                    </View>
+                    <Text style={styles.description}>{e.description}</Text>
+                    <Text style={styles.date}>{e.manufacture_date}</Text>
+                    <TouchableOpacity onPress={()=>OpenWebsite(e.wikipedia_link)}>
+                        <Text style={styles.readMe}>Read More</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <Text style={styles.description}>The Faisal Mosque is the national mosque of Pakistan, located in the capital city, Islamabad. It is the fifth-largest mosque in the world and the largest within South Asia, located on the foothills of Margalla Hills in Islamabad. It is named after the late King Faisal of Saudi Arabia.</Text>
-            <View style={styles.titleContainer}>
-                <TouchableOpacity onPress={()=>OpenWebsite('https://en.wikipedia.org/wiki/Faisal_Mosque')}>
-                    <Text>Read More</Text>
-                </TouchableOpacity>
-                <Text style={styles.date}>October, 1986</Text>
-            </View>
-        </View>
-      </View>
+        ))}
     </View>
   )
 }
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#001524',
         marginHorizontal: 8,
         borderRadius: 10,
+        marginBottom: 25,
     },
     details: {
         padding: 10,
@@ -68,5 +70,11 @@ const styles = StyleSheet.create({
     date: {
         color: '#AAABAE',
         textAlign: 'right',
+        marginBottom: 10,
+    },
+    readMe: {
+        color: '#AAABAE',
+        textAlign: 'right',
+        marginBottom: 10,
     },
 });

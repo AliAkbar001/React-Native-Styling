@@ -1,7 +1,10 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, Linking, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 export default function FancyCard() {
+    function OpenWebsite(link:string){
+        Linking.openURL(link)
+    }
   return (
     <View>
       <Text style={styles.headingTest}>Trending Card</Text>
@@ -16,7 +19,12 @@ export default function FancyCard() {
                 <Text>Islamabad City, Pakistan</Text>
             </View>
             <Text style={styles.description}>The Faisal Mosque is the national mosque of Pakistan, located in the capital city, Islamabad. It is the fifth-largest mosque in the world and the largest within South Asia, located on the foothills of Margalla Hills in Islamabad. It is named after the late King Faisal of Saudi Arabia.</Text>
-            <Text style={styles.date}>October, 1986</Text>
+            <View style={styles.titleContainer}>
+                <TouchableOpacity onPress={()=>OpenWebsite('https://en.wikipedia.org/wiki/Faisal_Mosque')}>
+                    <Text>Read More</Text>
+                </TouchableOpacity>
+                <Text style={styles.date}>October, 1986</Text>
+            </View>
         </View>
       </View>
     </View>
